@@ -1,0 +1,91 @@
+﻿@using SARPE.DTO
+@using System.Globalization
+@model IEnumerable<Produto>;
+
+@{
+	ProdutoCriarDTO produtoASerCriado = new ();
+}
+
+<div>
+	<div>
+		<form id="criarProdutoForm" name="criarProduto" method="post" asp-action="Create" role="form" asp>
+			<div class="col-6">
+				<div class="row g-2">
+					<div class="col-12">
+						<label asp-for="@produtoASerCriado.Nome" class="form-label"></label>
+						<input name="Nome" asp-for="@produtoASerCriado.Nome" class="form-control" />
+					</div>
+					<div class="col-12">
+						<label asp-for="@produtoASerCriado.Descricao" class="form-label"></label>
+						<input name="Descricao" asp-for="@produtoASerCriado.Descricao" class="form-control" />
+					</div>
+					<div class="col-12">
+						<label asp-for="@produtoASerCriado.Preco" class="form-label"></label>
+						<input name="Preco" asp-for=" @produtoASerCriado.Preco" class="form-control" />
+						<span asp-validation-for="@produtoASerCriado.Preco" class="text-danger"></span>
+					</div>
+					<div class="col-12">
+						<label asp-for="@produtoASerCriado.Lote" class="form-label"></label>
+						<input name="Lote" asp-for="@produtoASerCriado.Lote" class="form-control" />
+					</div>
+					<div class="col-12">
+						<label asp-for="@produtoASerCriado.CodigoDeBarras" class="form-label"></label>
+						<input name="CodigoDeBarras" asp-for="@produtoASerCriado.CodigoDeBarras" class="form-control" />
+					</div>
+				</div>
+				<div class="mt-2">
+						<input id="btnConfirmar" type="submit" class="btn btn-success" value="Confirmar" />
+						<button id="btnCancelar" type="button" class="btn btn-danger" onclick="limparFormulario()">Cancelar</button>					
+				</div>
+			</div>
+		</form>
+	</div>
+	<div>
+		@if(Model is not null && Model.Count() > 0)
+		{
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<td>Cod. Barras</td>
+						<td>Nome</td>
+						<td>Descrição</td>
+						<td>Preço</td>
+						<td>Lote</td>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach(var produto in Model)
+					{
+						<tr>
+							<td>@produto.CodigoDeBarras</td>
+							<td> <a asp-action="Details" asp-route-id="@produto.Id">@produto.Nome</a></td>
+							<td>@produto.Descricao</td>
+							<td>@produto.Preco.ToString("C", new CultureInfo("pt-BR"))</td>
+							<td>@produto.Lote</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		}
+		else
+		{
+			<h3>Não há Produtos cadastrados</h3>
+		}
+	</div>
+	<div class="col-6">
+		<div class="mt-2">
+			<button id="btnIncluir"  type="button" class="btn btn-success" >Incluir   </button>
+			<button id="btnCancelar" type="button" class="btn btn-danger"  >Deletar   </button>
+			<button id="btnCancelar" type="button" class="btn btn-primary" >Consultar </button>
+		</div>
+	</div>
+</div>
+
+@section Scripts{
+
+	<script defer>
+		function limparFormulario(){
+			$('#criarProdutoForm').trigger("reset");
+		}
+	</script>
+}
