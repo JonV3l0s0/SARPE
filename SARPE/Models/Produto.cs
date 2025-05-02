@@ -1,20 +1,34 @@
 ﻿
 
+using SARPE.DTO;
+using System.Diagnostics;
+
 namespace SARPE.Models
 {
     public class Produto : IEquatable<Produto?>
     {
         public int Id { get;  set; }
         public Estoque? EstoqueId { get; set; } 
-        public string CodigoDeBarras { get; private set; } = string.Empty;
-        public string Nome { get; private set; } = string.Empty;
-        public string Descricao { get; private set; } = string.Empty;
-        public float Preco { get; private set; }
-        public string Lote { get; private set; } = string.Empty;
+        public string CodigoDeBarras { get; set; } = string.Empty;
+        public string Nome { get; set; } = string.Empty;
+        public string Descricao { get; set; } = string.Empty;
+        public float Preco { get; set; }
+        public string Lote { get; set; } = string.Empty;
 
-
+        #region Construtor
         public Produto(string codigoDeBarras, string nome, string descricao, float preco, string lote)
         {
+            CodigoDeBarras = codigoDeBarras;
+            Nome = nome;
+            Descricao = descricao;
+            Preco = preco;
+            Lote = lote;
+        }
+
+        // Construtor com Id para fins de teste
+        public Produto(int id, string codigoDeBarras, string nome, string descricao, float preco, string lote)
+        {
+            Id = id;
             CodigoDeBarras = codigoDeBarras;
             Nome = nome;
             Descricao = descricao;
@@ -27,7 +41,9 @@ namespace SARPE.Models
         public Produto()
         {
         }
+        #endregion
 
+        #region HashCode e Equals
         public override bool Equals(object? obj)
         {
             return Equals(obj as Produto);
@@ -44,6 +60,7 @@ namespace SARPE.Models
         {
             return HashCode.Combine(Id, CodigoDeBarras);
         }
+        #endregion
 
     }
 }
