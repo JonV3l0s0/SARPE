@@ -43,3 +43,13 @@ body {
     padding-left: calc(var(--bs-gutter-x) * 0.5);
     margin-top: var(--bs-gutter-y);
 }
+
+table.table.table-striped tr th {
+    background: #629E60;
+    color: #fff;
+    border: 1px solid #000;
+}
+
+table.table.table-striped tr td {
+    border: 1px solid #000;
+}
