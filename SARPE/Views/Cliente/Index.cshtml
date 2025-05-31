@@ -82,7 +82,7 @@
 					<th>Razão Social</th>
 					<th>Endereço</th>
 					<th>Cidade</th>
-					<th>Contatos</th>
+					<th>Contatos(telefone/email)</th>
 					<th>Status</th>
 				</tr>
 			</thead>
@@ -91,7 +91,7 @@
 				{
 					<tr>
 						<td>@cliente.CnpjCpf</td>
-						<td>@cliente.RazaoSocial</td> <!--Colocar o asp-action details aqui tbm -->
+						<td><a asp-action="Details" asp-route-id="@cliente.Id">@cliente.RazaoSocial</a></td>
 						<td>@cliente.Endereco</td>
 						<td>@cliente.Cidade</td>
 						<td>

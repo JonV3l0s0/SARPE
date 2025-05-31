@@ -51,6 +51,14 @@
             return Equals(obj as Cliente);
         }
 
+        public bool Equals(Cliente? other)
+        {
+            return other is not null &&
+                Id == other.Id &&
+                CnpjCpf == other.CnpjCpf &&
+                RazaoSocial == other.RazaoSocial;
+        }
+
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, CnpjCpf, RazaoSocial);
