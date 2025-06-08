@@ -1,9 +1,9 @@
 ﻿@using SARPE.DTO
 @using System.Globalization
-@model IEnumerable<Produto>;
+@model IEnumerable<Cliente>;
 
 @{
-	ViewData["Title"] = "Relatório de produtos";
+	ViewData["Title"] = "Relatório de clientes";
 }
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 	<ol class="breadcrumb">
@@ -19,7 +19,7 @@
 				Relatórios
 			</a>
 		</li>
-		<li class="breadcrumb-item active" aria-current="page">Relatório de produtos</li>
+		<li class="breadcrumb-item active" aria-current="page">Relatório de clientes</li>
 	</ol>
 </nav>
 <div>
@@ -29,24 +29,32 @@
 			<table class="table table-striped text-center">
 				<thead>
 					<tr>
-						<th>Cod. Barras</th>
-						<th>Nome</th>
-						<th>Descrição</th>
-						<th>Preço</th>
-						<th>Lote</th>
+						<th>CNPJ/CPF</th>
+						<th>Razão Social</th>
+						<th>Endereço</th>
+						<th>Cidade</th>
+						<th>Contatos(telefone/email)</th>
+						<th>Status</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach (var produto in Model)
-					{
-						<tr>
-							<td>@produto.CodigoDeBarras</td>
-							<td> <a asp-action="Details" asp-route-id="@produto.Id">@produto.Nome</a></td>
-							<td>@produto.Descricao</td>
-							<td>@produto.Preco.ToString("C", new CultureInfo("pt-BR"))</td>
-							<td>@produto.Lote</td>
-						</tr>
-					}
+				@foreach (var cliente in Model)
+				{
+					<tr>
+						<td>@cliente.CnpjCpf</td>
+						<td><a asp-action="Details" asp-route-id="@cliente.Id">@cliente.RazaoSocial</a></td>
+						<td>@cliente.Endereco</td>
+						<td>@cliente.Cidade</td>
+						<td>
+							@Html.Raw(
+													(!string.IsNullOrWhiteSpace(cliente.Telefone) ? cliente.Telefone : "") +
+													(!string.IsNullOrWhiteSpace(cliente.Telefone) && !string.IsNullOrWhiteSpace(cliente.Email) ? "<br />" : "") +
+													(!string.IsNullOrWhiteSpace(cliente.Email) ? cliente.Email : "")
+													)
+						</td>
+						<td>@(cliente.IsAtivo ? "Ativo" : "Inativo")</td>
+					</tr>
+				}
 				</tbody>
 			</table>
 			<div class="mt-2 d-flex flex-row justify-content-between">

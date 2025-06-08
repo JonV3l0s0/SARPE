@@ -4,11 +4,11 @@ using SARPE.Extensions;
 
 namespace SARPE.Controllers
 {
-    public class RelatorioDeProdutos : Controller
+    public class RelatorioDeProdutosController : Controller
     {
         private readonly IProdutoService _produtoService;
 
-        public RelatorioDeProdutos(IProdutoService produtoService)
+        public RelatorioDeProdutosController(IProdutoService produtoService)
         {
             _produtoService = produtoService;
         }
