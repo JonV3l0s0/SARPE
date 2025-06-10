@@ -11,6 +11,7 @@ namespace SARPE.Models
 
         // Provavelmente precisa-se de construtor sem argumentos por conta do EntityFramework
         // obs: Averiguar essa informação
+        #region Construtor
         public Estoque()
         {
         }
@@ -21,7 +22,9 @@ namespace SARPE.Models
             Quantidade = quantidade;
             Status = status;
         }
+        #endregion Construtor
 
+        #region HashCode e Equals
         public override bool Equals(object? obj)
         {
             return Equals(obj as Estoque);
@@ -40,5 +43,6 @@ namespace SARPE.Models
         {
             return HashCode.Combine(Id, Nome, Quantidade, Status);
         }
+        #endregion HashCode e Equals
     }
 }
