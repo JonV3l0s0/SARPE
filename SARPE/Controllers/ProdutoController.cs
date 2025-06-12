@@ -33,7 +33,7 @@ namespace SARPE.Controllers
             var produto = _produtoService.GetProdutoPorId(id);
 
             if(produto is null)
-                RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
 
             var produtoVM = produto!.ToDetalheViewModel();
             return View(produtoVM);

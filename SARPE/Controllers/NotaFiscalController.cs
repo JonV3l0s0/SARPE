@@ -28,10 +28,9 @@ namespace SARPE.Controllers
         {
             var notaFiscal = _notaFiscalService.GetNotaFiscalPorId(id);
 
-            if (notaFiscal == null)
-                RedirectToAction(nameof(Index));
+            if (notaFiscal is null)
+                return RedirectToAction(nameof(Index));
 
-            // Mapeie para o ViewModel
             var nfVm = notaFiscal!.ToDetalheViewModel();
             return View(nfVm);
         }
