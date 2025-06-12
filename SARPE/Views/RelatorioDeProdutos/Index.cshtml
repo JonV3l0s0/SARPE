@@ -1,0 +1,88 @@
+﻿@using SARPE.DTO
+@using System.Globalization
+@model IEnumerable<Produto>;
+
+@{
+	ViewData["Title"] = "Relatório de produtos";
+}
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item d-flex align-items-center">
+			<a asp-area="" asp-controller="Home" asp-action="Index" class="d-flex align-items-center">
+				<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M2 16H5V10H11V16H14V7L8 2.5L2 7V16ZM0 18V6L8 0L16 6V18H9V12H7V18H0Z" fill="#000" />
+				</svg>
+			</a>
+		</li>
+		<li class="breadcrumb-item d-flex align-items-center">
+			<a asp-area="" asp-controller="Home" asp-action="Relatorios" class="text-decoration-none">
+				Relatórios
+			</a>
+		</li>
+		<li class="breadcrumb-item active" aria-current="page">Relatório de produtos</li>
+	</ol>
+</nav>
+<div>
+	<div class="mt-3">
+		@if (Model is not null && Model.Count() > 0)
+		{
+			<table class="table table-striped text-center">
+				<thead>
+					<tr>
+						<th>Cod. Barras</th>
+						<th>Nome</th>
+						<th>Descrição</th>
+						<th>Preço</th>
+						<th>Lote</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var produto in Model)
+					{
+						<tr>
+							<td>@produto.CodigoDeBarras</td>
+							<td> <a asp-action="Details" asp-route-id="@produto.Id">@produto.Nome</a></td>
+							<td>@produto.Descricao</td>
+							<td>@produto.Preco.ToString("C", new CultureInfo("pt-BR"))</td>
+							<td>@produto.Lote</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+			<div class="mt-2 d-flex flex-row justify-content-between">
+				<a class="btn btn-secondary col-2" asp-area="" asp-controller="Home" asp-action="Relatorios">
+					Voltar
+					<svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M3 15V13H10.1C11.15 13 12.0625 12.6667 12.8375 12C13.6125 11.3333 14 10.5 14 9.5C14 8.5 13.6125 7.66667 12.8375 7C12.0625 6.33333 11.15 6 10.1 6H3.8L6.4 8.6L5 10L0 5L5 0L6.4 1.4L3.8 4H10.1C11.7167 4 13.1042 4.525 14.2625 5.575C15.4208 6.625 16 7.93333 16 9.5C16 11.0667 15.4208 12.375 14.2625 13.425C13.1042 14.475 11.7167 15 10.1 15H3Z" fill="white" />
+					</svg>
+				</a>
+				<nav aria-label="Navegação de página">
+					<ul class="pagination justify-content-center mb-0">
+						<li class="page-item me-2">
+							<a class="page-link" href="#" aria-label="Anterior">
+								<span aria-hidden="true">&lt;</span>
+							</a>
+						</li>
+						<li class="page-item">
+							<input type="text" class="form-control" style="width: 60px; text-align: center; display: inline-block;" value="1">
+							de XX
+						</li>
+						<li class="page-item ms-2">
+							<a class="page-link" href="#" aria-label="Próximo">
+								<span aria-hidden="true">&gt;</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+			</div>
+		}
+		else
+		{
+			<h3>Não há Produtos cadastrados</h3>
+		}
+	</div>
+
+
+
+</div>

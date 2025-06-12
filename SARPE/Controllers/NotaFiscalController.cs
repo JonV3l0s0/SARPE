@@ -1,52 +1,47 @@
-﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SARPE.Contracts;
 using SARPE.DTO;
 using SARPE.Extensions;
-using SARPE.Models;
 
 namespace SARPE.Controllers
 {
-    public class ProdutoController : Controller
+    public class NotaFiscalController : Controller
     {
-        
-        private readonly IProdutoService _produtoService;
+        private readonly INotaFiscalService _notaFiscalService;
 
-        public ProdutoController(IProdutoService produtoService)
+        public NotaFiscalController(INotaFiscalService service)
         {
-            _produtoService = produtoService;
+            _notaFiscalService = service;
         }
-
 
         // GET: ProdutoController
         [HttpGet(Name = nameof(Index))]
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            var produtos = _produtoService.GetTodosOsProdutos();
-            return View(produtos);
+            var notas = _notaFiscalService.GetTodasNotasFiscais();
+            return View(notas);
         }
 
         // GET: ProdutoController/Details/5
         [HttpGet(Name = nameof(Details))]
         public ActionResult Details(int id)
         {
-            var produto = _produtoService.GetProdutoPorId(id);
+            var notaFiscal = _notaFiscalService.GetNotaFiscalPorId(id);
 
-            if(produto is null)
+            if (notaFiscal is null)
                 return RedirectToAction(nameof(Index));
 
-            var produtoVM = produto!.ToDetalheViewModel();
-            return View(produtoVM);
+            var nfVm = notaFiscal!.ToDetalheViewModel();
+            return View(nfVm);
         }
-
 
         [HttpPost(Name = nameof(Create))]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ProdutoCriarDTO produtoDTO)
+        public ActionResult Create(NotaFiscalCriarDTO notaFiscalDTO)
         {
             try
-            {   
-                _produtoService.SalvarProduto(produtoDTO);
+            {
+                _notaFiscalService.SalvarNotaFiscal(notaFiscalDTO);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -57,11 +52,11 @@ namespace SARPE.Controllers
 
         [HttpPost(Name = nameof(Edit))]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, ProdutoEditarDTO produtoEditado)
+        public ActionResult Edit(int id, NotaFiscalEditarDTO notaFiscalEditada)
         {
             try
-            {               
-                _produtoService.AtualizarProduto(id, produtoEditado);
+            {
+                _notaFiscalService.AtualizarNotaFiscal(id, notaFiscalEditada);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -70,12 +65,12 @@ namespace SARPE.Controllers
             }
         }
 
-        [HttpGet(Name = nameof(Delete))] 
+        [HttpGet(Name = nameof(Delete))]
         public ActionResult Delete(int id)
         {
             try
             {
-                _produtoService.ExcluirProdutoPorId(id);
+                _notaFiscalService.ExcluirNotaFiscalPorId(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
