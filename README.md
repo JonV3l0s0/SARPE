@@ -4,7 +4,7 @@
 
 [DiAGRAMA BD](https://dbdiagram.io/d/6838f976bd74709cb72f2d53)
 
-[TEMPLATE REQUISITOS](https://docs.google.com/document/d/1J9nU3VHPkek2CnLqutdHv0UbxeoFu2ep)
+[TEMPLATE REQUISITOS](https://docs.google.com/document/d/1w83ZcpKWXXyAxtSeFHH5XMu-wAxejjLs)
 
 [SHAREPOINT COM OS ARQUIVOS DO TRABALHO](https://drive.google.com/drive/folders/15U6kIRS_97hEN1NLkGoDlB09NxViDXAb?usp=drive_link)
 
