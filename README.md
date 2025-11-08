@@ -8,6 +8,8 @@
 
 [SHAREPOINT COM OS ARQUIVOS DO TRABALHO](https://drive.google.com/drive/folders/15U6kIRS_97hEN1NLkGoDlB09NxViDXAb?usp=drive_link)
 
+[GIT FLOW](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+
 ## PROJETO CURRICULARIZAÇãO
 
 O projeto SARPE (Sistema de Automação de Recursos para Pequenas Empresas) foi idealizado pelo grupo como parte do processo de curricularização, com o objetivo de criar um ERP acessível e eficiente voltado às necessidades de pequenas empresas. A proposta integra teoria e prática, permitindo a aplicação dos conhecimentos adquiridos em sala de aula no desenvolvimento de uma solução real e útil para o mercado para enriquecimento dos micro-empreendedores regionais, sem fins lucrativos para a equipe de desenvolvimento.
