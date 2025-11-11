@@ -4,7 +4,7 @@ html {
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 1.2rem;
   }
 }
 
@@ -19,4 +19,37 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.form-label {
+    margin-bottom: 0.5rem;
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+
+.row > * {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    margin-top: var(--bs-gutter-y);
+}
+
+table.table.table-striped tr th {
+    background: #629E60;
+    color: #fff;
+    border: 1px solid #000;
+}
+
+table.table.table-striped tr td {
+    border: 1px solid #000;
 }
