@@ -1,0 +1,50 @@
+﻿@{
+	ViewData["Title"] = "Relatórios";
+}
+
+<!-- #region breadcrumb -->
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item d-flex align-items-center">
+			<a asp-area="" asp-controller="Home" asp-action="Index" class="d-flex align-items-center">
+				<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M2 16H5V10H11V16H14V7L8 2.5L2 7V16ZM0 18V6L8 0L16 6V18H9V12H7V18H0Z" fill="#000" />
+				</svg>
+			</a>
+		</li>
+		<li class="breadcrumb-item active" aria-current="page">Relatórios</li>
+	</ol>
+</nav>
+<!-- #endregion breadcrumb -->
+<div class="container-central d-flex flex-column justify-content-center gap-3">
+
+	<div class="d-flex flex-column justify-content-center">
+		<img src="~/logo_sarpe.png" />
+	</div>
+
+	<div class="d-flex flex-column gap-3">
+		<div class="d-flex justify-content-between">
+			<div class="col-4 pe-2">
+				<a class="btn btn-secondary d-block py-4" asp-area="" asp-controller="RelatorioDeProdutos" asp-action="Index">Relatório de produtos</a>
+			</div>
+			<div class="col-4 px-2">
+				<a class="btn btn-secondary d-block py-4" asp-area="" asp-controller="" asp-action="">Relatório de estoque</a>
+			</div>
+			<div class="col-4 ps-2">
+				<a class="btn btn-secondary d-block py-4" asp-area="" asp-controller="" asp-action="">Relatório de notas fiscais</a>
+			</div>
+		</div>
+
+		<div class="d-flex justify-content-between">
+			<div class="col-4 pe-2">
+				<a class="btn btn-secondary d-block py-4" asp-area="" asp-controller="" asp-action="">Relatório financeiro</a>
+			</div>
+			<div class="col-4 px-2">
+				<a class="btn btn-secondary d-block py-4" asp-area="" asp-controller="RelatorioDeClientes" asp-action="Index">Relatório de clientes</a>
+			</div>
+			<div class="col-4 ps-2">
+				<a class="btn btn-danger d-block py-4" asp-area="" asp-controller="Home" asp-action="Index">Retornar</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,58 @@
+﻿@using SARPE.DTO
+@using SARPE.Extensions;
+@model ProdutoDetalheViewModel
+
+@{
+	ProdutoEditarDTO produtoDTO = Model.ToEditarDTO();
+	ViewData["Title"] = "Editar produto";
+}
+
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item d-flex align-items-center">
+			<a asp-area="" asp-controller="Home" asp-action="Index" class="d-flex align-items-center">
+				<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M2 16H5V10H11V16H14V7L8 2.5L2 7V16ZM0 18V6L8 0L16 6V18H9V12H7V18H0Z" fill="#000" />
+				</svg>
+			</a>
+		</li>
+		<li class="breadcrumb-item"><a asp-area="" asp-controller="Produto" asp-action="Index" class="text-decoration-none">Produtos</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Editar produto</li>
+	</ol>
+</nav>
+
+<form id="editarProdutoForm" name="editarProduto" method="post" asp-action="Edit" role="form" asp-route-id="@Model.Id">
+	<div class="col-6">
+		<div class="row g-2"> <!--Provavelmente vou add o cod de barras e lote para serem editáveis-->
+			<div class="col-12">
+				<label asp-for="@produtoDTO.Nome" class="form-label"></label>
+				<input name="Nome" asp-for="@produtoDTO.Nome" class="form-control" />
+			</div>
+			<div class="col-12">
+				<label asp-for="@produtoDTO.Descricao" class="form-label"></label>
+				<input name="Descricao" asp-for="@produtoDTO.Descricao" class="form-control" />
+			</div>
+			<div class="col-12">
+				<label asp-for="@produtoDTO.Preco" class="form-label"></label>
+				<input name="Preco" asp-for="@produtoDTO.Preco" class="form-control" />
+				<span asp-validation-for="@produtoDTO.Preco" class="text-danger"></span>
+			</div>
+			<div class="col-12">
+				<label asp-for="Lote" class="form-label"></label>
+				<input asp-for="Lote" class="form-control" disabled readonly />
+			</div>
+		</div>
+		<div class="mt-2">
+			<input id="btnEditarProduto" type="submit" class="btn btn-success" value="Atualizar Produto" />
+			<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Deletar Produto</a>
+		</div>
+	</div>
+</form>
+
+@* <form id="deletarProdutoForm" name="deletarProduto" method="post" asp-action="Delete" role="form" asp-route-id="@Model.Id">
+	<div class="mt-2">
+		<div class="col-md-offset-2 col-md-5">
+			<input type="submit" class="btn btn-danger" value="Deletar Produto" />
+		</div>
+	</div>
+</form> *@
