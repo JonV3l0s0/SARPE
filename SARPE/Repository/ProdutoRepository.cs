@@ -6,12 +6,7 @@ namespace SARPE.Repository
 {
     public class ProdutoRepository : IProdutoRepository
     {
-        private readonly static List<Produto> _produtos =
-        [
-             new(1, "00001", "TV TCL 55C655", "Aparelho audiovisual", 2300.0f, "XPTO"),
-             new(2, "00002", "TV Samsung Q43N90D", "Aparelho audiovisual", 2300.0f, "XPTO"),
-             new(3, "00003", "TV LG Crystal", "Aparelho audiovisual", 2300.0f, "XPTO"),
-        ];
+        private readonly static List<Produto> _produtos = [];
 
         public void AtualizarProduto(Produto produto)
         {
