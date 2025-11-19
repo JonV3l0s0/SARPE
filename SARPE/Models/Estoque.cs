@@ -5,9 +5,9 @@ namespace SARPE.Models
     public class Estoque : IEquatable<Estoque?>
     {
         public int Id { get;  set; }
-        public string Nome { get; private set; } = string.Empty;
-        public long Quantidade { get; private set; }
-        public EStatusEstoque Status { get; set; }
+        public string Nome { get; set; } = string.Empty;
+        public long Quantidade { get; set; } = 0;
+        public EStatusEstoque Status { get; set; } = EStatusEstoque.Indisponivel;
 
         // Provavelmente precisa-se de construtor sem argumentos por conta do EntityFramework
         // obs: Averiguar essa informação
@@ -16,8 +16,9 @@ namespace SARPE.Models
         {
         }
 
-        public Estoque(string nome, long quantidade, EStatusEstoque status)
+        public Estoque(int id,string nome, long quantidade, EStatusEstoque status)
         {
+            Id = id;
             Nome = nome;
             Quantidade = quantidade;
             Status = status;

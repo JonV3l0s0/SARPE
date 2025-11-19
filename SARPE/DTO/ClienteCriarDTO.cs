@@ -1,5 +1,4 @@
 ﻿using SARPE.Enums;
-using SARPE.Models;
 
 namespace SARPE.DTO
 {

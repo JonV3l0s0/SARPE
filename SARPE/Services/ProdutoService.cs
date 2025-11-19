@@ -47,7 +47,7 @@ namespace SARPE.Services
 
         public void SalvarProduto(ProdutoCriarDTO produtoDTO)
         {
-            var id = GetTodosOsProdutos().Last().Id + 5;
+            var id = GetTodosOsProdutos().Count() == 0 ? 0 : GetTodosOsProdutos().Last().Id + 5;
 
             var produto = new Produto
             (

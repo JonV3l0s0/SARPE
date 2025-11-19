@@ -1,0 +1,44 @@
+﻿@using SARPE.DTO;
+@using SARPE.Extensions;
+@model EstoqueDetalheViewModel;
+
+@{
+	EstoqueEditarDTO estoqueDTO = Model.ToEditarDTO();
+	ViewData["Title"] = "Editar estoque";
+}
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item d-flex align-items-center">
+			<a asp-area="" asp-controller="Home" asp-action="Index" class="d-flex align-items-center">
+				<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M2 16H5V10H11V16H14V7L8 2.5L2 7V16ZM0 18V6L8 0L16 6V18H9V12H7V18H0Z" fill="#000" />
+				</svg>
+			</a>
+		</li>
+		<li class="breadcrumb-item"><a asp-area="" asp-controller="Estoque" asp-action="Index" class="text-decoration-none">Estoque</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Editar estoque</li>
+	</ol>
+</nav>
+
+<form id="editarEstoqueForm" name="editarEstoque" method="post" asp-action="Edit" role="form" asp-route-id="@Model.Id">
+	<div class="d-flex flex-column gap-3">
+			<div class="col-6 pe-2">
+				<label asp-for="@estoqueDTO.Nome" class="form-label">Nome</label>
+				<input name="Nome" asp-for="@estoqueDTO.Nome" class="form-control" required />
+			</div>
+			<div class="col-6 pe-2">
+				<label asp-for="@estoqueDTO.Quantidade" class="form-label">Quantidade</label>
+				<input name="Quantidade" asp-for="@estoqueDTO.Quantidade" class="form-control" required />
+			</div>
+			<div class="col-6 pe-2">
+				<select name="Status" asp-for="@estoqueDTO.Status" class="form-select">
+					<option value="Disponível">Disponível</option>
+					<option value="Indisponível">Indisponível</option>
+				</select>
+			</div>
+			<div class="mt-2">
+				<input id="btnEditarEstoque" type="submit" class="btn btn-success" value="Atualizar Estoque" />
+				<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Deletar Estoque</a>
+			</div>
+	</div>
+</form>

@@ -10,8 +10,8 @@ builder.Services.AddScoped<IProdutoRepository,ProdutoRepository>();
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
-builder.Services.AddScoped<INotaFiscalRepository, NotaFiscalRepository>();
-builder.Services.AddScoped<INotaFiscalService, NotaFiscalService>();
+builder.Services.AddScoped<IEstoqueService, EstoqueService>();
+builder.Services.AddScoped<IEstoqueRepository, EstoqueRepository>();
 
 var app = builder.Build();
 

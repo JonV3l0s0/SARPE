@@ -48,7 +48,7 @@ namespace SARPE.Services
 
         public void SalvarCliente(ClienteCriarDTO clienteDTO)
         {
-            var id = GetTodosOsClientes().Last().Id + 5;
+            var id = GetTodosOsClientes().Count() == 0 ? 0 : GetTodosOsClientes().Last().Id + 5;
 
             var cliente = new Cliente
                 (
