@@ -26,7 +26,12 @@ namespace SARPE.Controllers
         [HttpGet(Name = nameof(Details))]
         public ActionResult Details(int id)
         {
-            //fazer essa parte
+            var estoque = _estoqueService.GetEstoquePorId(id);
+            if (estoque is null)
+                return RedirectToAction(nameof(Index));
+
+            var estoqueVm = estoque!.ToDetalheViewModel();
+            return View(estoqueVm);
         }
 
         [HttpPost(Name = nameof(Create))]
