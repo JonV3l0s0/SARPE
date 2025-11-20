@@ -4,7 +4,6 @@ namespace SARPE.DTO
 {
     public class ProdutoCriarDTO
     {
-        public Estoque? EstoqueId { get; set; }
         public string CodigoDeBarras { get;  set; } = string.Empty;
         public string Nome { get; set; } = string.Empty;
         public string Descricao { get; set; } = string.Empty;

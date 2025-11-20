@@ -5,10 +5,9 @@ using System.Diagnostics;
 
 namespace SARPE.Models
 {
-    public class Produto : IEquatable<Produto?>
+    public class Produto
     {
         public int Id { get;  set; }
-        public Estoque? EstoqueId { get; set; } 
         public string CodigoDeBarras { get; set; } = string.Empty;
         public string Nome { get; set; } = string.Empty;
         public string Descricao { get; set; } = string.Empty;
