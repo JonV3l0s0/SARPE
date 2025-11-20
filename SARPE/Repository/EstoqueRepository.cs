@@ -41,6 +41,23 @@ namespace SARPE.Repository
             }
         }
 
+        public void ExcluirTodoOEstoque()
+        {
+            try
+            {
+                if (!_estoques.Any()) return;
+
+                _estoques.Clear();
+
+                Debug.WriteLine("Todos os estoques foram excluídos!");
+            }
+            catch
+            {
+                Debug.WriteLine("Erro ao excluir todos os estoques!");
+                throw;
+            }
+        }
+
         public Estoque? GetEstoquePorId(int id)
         {
             return _estoques.FirstOrDefault(e => e.Id == id);

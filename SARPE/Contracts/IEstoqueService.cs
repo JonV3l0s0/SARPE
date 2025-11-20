@@ -10,5 +10,6 @@ namespace SARPE.Contracts
         void SalvarEstoque(EstoqueCriarDTO estoqueDTO);
         void AtualizarEstoque(int id, EstoqueEditarDTO estoqueDTO);
         void ExcluirEstoquePorId(int id);
+        void ExcluirTodoOEstoque();
     }
 }

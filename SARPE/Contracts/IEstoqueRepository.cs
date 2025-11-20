@@ -9,5 +9,6 @@ namespace SARPE.Contracts
         void SalvarEstoque(Estoque estoque);
         void AtualizarEstoque(Estoque estoque);
         void ExcluirEstoquePorId(int id);
+        void ExcluirTodoOEstoque();
     }
 }

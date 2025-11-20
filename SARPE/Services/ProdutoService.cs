@@ -33,6 +33,11 @@ namespace SARPE.Services
             _produtoRepository.ExcluirProdutoPorId(id);
         }
 
+        public void ExcluirTodosOsProdutos()
+        {
+                _produtoRepository.ExcluirTodosOsProdutos();
+        }
+
         public Produto? GetProdutoPorId(int id)
         {
            var produto = _produtoRepository.GetProdutoPorId(id);

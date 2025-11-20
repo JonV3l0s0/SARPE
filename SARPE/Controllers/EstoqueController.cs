@@ -78,5 +78,19 @@ namespace SARPE.Controllers
                 return View();
             }
         }
+
+        [HttpPost]
+        public ActionResult ExcluirTodoOEstoque()
+        {
+            try
+            {
+                _estoqueService.ExcluirTodoOEstoque();
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

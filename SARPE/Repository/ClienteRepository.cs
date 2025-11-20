@@ -49,6 +49,23 @@ namespace SARPE.Repository
             }
         }
 
+        public void ExcluirTodosOsClientes()
+        {
+            try
+            {
+                if(!_clientes.Any()) return;
+
+                _clientes.Clear();
+
+                Debug.WriteLine("Todos os clientes foram excluídos!");
+            }
+            catch
+            {
+                Debug.WriteLine("Erro ao excluir todos os clientes!");
+                throw;
+            }
+        }
+
         public Cliente? GetClientePorId(int id)
         {
             return _clientes.FirstOrDefault(c => c.Id == id);

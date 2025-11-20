@@ -9,5 +9,6 @@ namespace SARPE.Contracts
         void SalvarCliente(Cliente cliente);
         void AtualizarCliente(Cliente cliente);
         void ExcluirClientePorId(int id);
+        void ExcluirTodosOsClientes();
     }
 }

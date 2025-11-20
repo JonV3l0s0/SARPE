@@ -34,6 +34,11 @@ namespace SARPE.Services
             _clienteRepository.ExcluirClientePorId(id);
         }
 
+        public void ExcluirTodosOsClientes()
+        {
+            _clienteRepository.ExcluirTodosOsClientes();
+        }
+
         public Cliente? GetClientePorId(int id)
         {
             var cliente = _clienteRepository.GetClientePorId(id);

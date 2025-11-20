@@ -76,5 +76,18 @@ namespace SARPE.Controllers
                 return View();
             }
         }
+
+        public ActionResult ExcluirTodosOsClientes()
+        {
+            try
+            {
+                _clienteService.ExcluirTodosOsClientes();
+                return RedirectToAction(nameof(Index));
+            }
+            catch 
+            {
+                return View();
+            }
+        }
     }
 }

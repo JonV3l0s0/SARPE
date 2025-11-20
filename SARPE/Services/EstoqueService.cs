@@ -31,6 +31,11 @@ namespace SARPE.Services
             _estoqueRepository.ExcluirEstoquePorId(id);
         }
 
+        public void ExcluirTodoOEstoque()
+        {
+            _estoqueRepository.ExcluirTodoOEstoque();
+        }
+
         public Estoque? GetEstoquePorId(int id)
         {
             var estoque = _estoqueRepository.GetEstoquePorId(id);

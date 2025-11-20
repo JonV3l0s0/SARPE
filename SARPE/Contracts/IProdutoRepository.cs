@@ -9,5 +9,6 @@ namespace SARPE.Contracts
         void SalvarProduto(Produto produto);
         void AtualizarProduto(Produto produto);
         void ExcluirProdutoPorId(int id);
+        void ExcluirTodosOsProdutos();
     }
 }

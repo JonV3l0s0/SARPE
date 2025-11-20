@@ -83,5 +83,19 @@ namespace SARPE.Controllers
                 return View();
             }
         }
+
+        [HttpPost]
+        public ActionResult ExcluirTodosOsProdutos()
+        {
+            try
+            {
+                _produtoService.ExcluirTodosOsProdutos();
+                return RedirectToAction(nameof(Index));
+            }
+            catch 
+            {
+                return View();
+            }
+        }
     }
 }

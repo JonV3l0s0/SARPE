@@ -47,6 +47,24 @@ namespace SARPE.Repository
             }
         }
 
+        public void ExcluirTodosOsProdutos()
+        {
+            try
+            {
+
+                if(!_produtos.Any()) return;
+
+                _produtos.Clear();
+
+                Debug.WriteLine("Todos os produtos foram excluídos!");
+            }
+            catch
+            {
+                Debug.WriteLine("Erro ao excluir todos os produtos!");
+                throw;
+            }
+        }
+
         public Produto? GetProdutoPorId(int id)
         {
            return _produtos.FirstOrDefault(p => p.Id == id);
