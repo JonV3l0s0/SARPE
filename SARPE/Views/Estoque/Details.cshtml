@@ -31,9 +31,8 @@
 				<input name="Quantidade" asp-for="@estoqueDTO.Quantidade" class="form-control" required />
 			</div>
 			<div class="col-6 pe-2">
-				<select name="Status" asp-for="@estoqueDTO.Status" class="form-select">
-					<option value="Disponível">Disponível</option>
-					<option value="Indisponível">Indisponível</option>
+				<select asp-for="Status" asp-items="@(IEnumerable<SelectListItem>)ViewBag.StatusList" class="form-select">
+					<option value="" disabled selected>Selecione o status</option>
 				</select>
 			</div>
 			<div class="mt-2">

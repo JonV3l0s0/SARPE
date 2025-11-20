@@ -51,20 +51,15 @@
 					<th scope="col">Nome</th>
 					<th scope="col">Quantidade</th>
 					<th scope="col">Status</th>
-					<th scope="col">Ações</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach (var estoque in Model)
 				{
 					<tr>
-						<td>@estoque.Nome</td>
+						<td><a asp-action="Details" asp-route-id="@estoque.Id">@estoque.Nome</a></td>
 						<td>@estoque.Quantidade</td>
 						<td>@estoque.Status</td>
-						<td>
-							<a asp-action="Details" asp-route-id="@estoque.Id" class="btn btn-primary btn-sm me-2">Editar</a>
-							<a asp-action="Delete" asp-route-id="@estoque.Id" class="btn btn-danger btn-sm">Excluir</a>
-						</td>
 					</tr>
 				}
 			</tbody>

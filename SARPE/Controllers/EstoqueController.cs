@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SARPE.Contracts;
 using SARPE.DTO;
 using SARPE.Extensions;
@@ -26,6 +27,8 @@ namespace SARPE.Controllers
         [HttpGet(Name = nameof(Details))]
         public ActionResult Details(int id)
         {
+            ViewBag.StatusList = new SelectList(Enum.GetValues(typeof(Enums.EStatusEstoque)));
+
             var estoque = _estoqueService.GetEstoquePorId(id);
             if (estoque is null)
                 return RedirectToAction(nameof(Index));
