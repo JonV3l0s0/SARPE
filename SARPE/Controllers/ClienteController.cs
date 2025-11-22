@@ -48,6 +48,20 @@ namespace SARPE.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult SalvarTodosOsClientes()
+        {
+            try
+            {
+                _clienteService.SalvarTodosOsClientes();
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         [HttpPost(Name = nameof(Edit))]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, ClienteEditarDTO clienteEditado)
@@ -72,6 +86,19 @@ namespace SARPE.Controllers
                 return RedirectToAction(nameof(Index));
             }
             catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ExcluirTodosOsClientes()
+        {
+            try
+            {
+                _clienteService.ExcluirTodosOsClientes();
+                return RedirectToAction(nameof(Index));
+            }
+            catch 
             {
                 return View();
             }

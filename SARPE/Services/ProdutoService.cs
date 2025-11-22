@@ -23,6 +23,7 @@ namespace SARPE.Services
                         
             produto.Nome = produtoDTO.Nome;
             produto.Descricao = produtoDTO.Descricao;
+            produto.Quantidade = produtoDTO.Quantidade;
             produto.Preco = produtoDTO.Preco;
 
             _produtoRepository.AtualizarProduto(produto);
@@ -33,9 +34,19 @@ namespace SARPE.Services
             _produtoRepository.ExcluirProdutoPorId(id);
         }
 
+        public void ExcluirTodosOsProdutos()
+        {
+                _produtoRepository.ExcluirTodosOsProdutos();
+        }
+
         public Produto? GetProdutoPorId(int id)
         {
            var produto = _produtoRepository.GetProdutoPorId(id);
+           return produto;
+        }
+        public Produto? GetProdutoSalvoPorId(int id)
+        {
+           var produto = _produtoRepository.GetProdutoSalvoPorId(id);
            return produto;
         }
 
@@ -45,21 +56,31 @@ namespace SARPE.Services
             return todosOsProdutos;
         }
 
+        public IEnumerable<Produto> GetTodosOsProdutosSalvos()
+        {
+            var todosOsProdutosSalvos = _produtoRepository.GetTodosOsProdutosSalvos();
+            return todosOsProdutosSalvos;
+        }
+
         public void SalvarProduto(ProdutoCriarDTO produtoDTO)
         {
-            var id = GetTodosOsProdutos().Count() == 0 ? 0 : GetTodosOsProdutos().Last().Id + 5;
-
             var produto = new Produto
             (
-                id,
+                0,
                 produtoDTO.CodigoDeBarras,
                 produtoDTO.Nome,
                 produtoDTO.Descricao,
+                produtoDTO.Quantidade,
                 produtoDTO.Preco,
                 produtoDTO.Lote
             );
 
             _produtoRepository.SalvarProduto(produto);
+        }
+
+        public void SalvarTodosOsProdutos()
+        {
+            _produtoRepository.SalvarTodosOsProdutos();
         }
     }
 }

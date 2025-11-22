@@ -33,9 +33,12 @@
 				<input name="Descricao" asp-for="@produtoDTO.Descricao" class="form-control" />
 			</div>
 			<div class="col-12">
+				<label asp-for="@produtoDTO.Quantidade" class="form-label"></label>
+				<input name="Quantidade" asp-for="@produtoDTO.Quantidade" class="form-control" />
+			</div>
+			<div class="col-12">
 				<label asp-for="@produtoDTO.Preco" class="form-label"></label>
 				<input name="Preco" asp-for="@produtoDTO.Preco" class="form-control" />
-				<span asp-validation-for="@produtoDTO.Preco" class="text-danger"></span>
 			</div>
 			<div class="col-12">
 				<label asp-for="Lote" class="form-label"></label>

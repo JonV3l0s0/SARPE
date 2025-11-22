@@ -34,9 +34,20 @@ namespace SARPE.Services
             _clienteRepository.ExcluirClientePorId(id);
         }
 
+        public void ExcluirTodosOsClientes()
+        {
+            _clienteRepository.ExcluirTodosOsClientes();
+        }
+
         public Cliente? GetClientePorId(int id)
         {
             var cliente = _clienteRepository.GetClientePorId(id);
+            return cliente;
+        }
+
+        public Cliente? GetClienteSalvoPorId(int id)
+        {
+            var cliente = _clienteRepository.GetClienteSalvoPorId(id);
             return cliente;
         }
 
@@ -46,13 +57,17 @@ namespace SARPE.Services
             return todosOsClientes;
         }
 
+        public IEnumerable<Cliente> GetTodosOsClientesSalvos()
+        {
+            var todosOsClientesSalvos = _clienteRepository.GetTodosOsClientesSalvos();
+            return todosOsClientesSalvos;
+        }
+
         public void SalvarCliente(ClienteCriarDTO clienteDTO)
         {
-            var id = GetTodosOsClientes().Count() == 0 ? 0 : GetTodosOsClientes().Last().Id + 5;
-
             var cliente = new Cliente
                 (
-                id,
+                0,
                 clienteDTO.CnpjCpf,
                 clienteDTO.RazaoSocial,
                 clienteDTO.Endereco,
@@ -64,5 +79,10 @@ namespace SARPE.Services
 
             _clienteRepository.SalvarCliente(cliente);
         }
+
+        public void SalvarTodosOsClientes()
+        {
+            _clienteRepository.SalvarTodosOsClientes();
+        }   
     }
 }

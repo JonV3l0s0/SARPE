@@ -32,6 +32,7 @@
 						<th>Cod. Barras</th>
 						<th>Nome</th>
 						<th>Descrição</th>
+						<th>Quantidade</th>
 						<th>Preço</th>
 						<th>Lote</th>
 					</tr>
@@ -43,6 +44,7 @@
 							<td>@produto.CodigoDeBarras</td>
 							<td> <a asp-action="Details" asp-route-id="@produto.Id">@produto.Nome</a></td>
 							<td>@produto.Descricao</td>
+							<td>@produto.Quantidade</td>
 							<td>@produto.Preco.ToString("C", new CultureInfo("pt-BR"))</td>
 							<td>@produto.Lote</td>
 						</tr>
