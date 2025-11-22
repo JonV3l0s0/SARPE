@@ -17,14 +17,14 @@ namespace SARPE.Controllers
         [HttpGet(Name = nameof(Index))]
         public IActionResult Index()
         {
-            var clientes = _clienteService.GetTodosOsClientes();
+            var clientes = _clienteService.GetTodosOsClientesSalvos();
             return View(clientes);
         }
 
         [HttpGet(Name = nameof(Details))]
         public ActionResult Details(int id)
         {
-            var cliente = _clienteService.GetClientePorId(id);
+            var cliente = _clienteService.GetClienteSalvoPorId(id);
             if (cliente is null)
                 return RedirectToAction(nameof(Index));
 
