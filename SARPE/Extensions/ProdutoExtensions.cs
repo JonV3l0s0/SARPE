@@ -12,6 +12,7 @@ namespace SARPE.Extensions
                 Id = produto.Id,
                 Nome = produto.Nome,
                 Descricao = produto.Descricao,
+                Quantidade = produto.Quantidade,
                 Preco = produto.Preco,
                 Lote = produto.Lote,
             };
@@ -23,6 +24,7 @@ namespace SARPE.Extensions
             {
                 Nome = produto.Nome,
                 Descricao = produto.Descricao,
+                Quantidade = produto.Quantidade,
                 Preco = produto.Preco,
             };
         }

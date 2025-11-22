@@ -23,6 +23,7 @@ namespace SARPE.Services
                         
             produto.Nome = produtoDTO.Nome;
             produto.Descricao = produtoDTO.Descricao;
+            produto.Quantidade = produtoDTO.Quantidade;
             produto.Preco = produtoDTO.Preco;
 
             _produtoRepository.AtualizarProduto(produto);
@@ -60,6 +61,7 @@ namespace SARPE.Services
                 produtoDTO.CodigoDeBarras,
                 produtoDTO.Nome,
                 produtoDTO.Descricao,
+                produtoDTO.Quantidade,
                 produtoDTO.Preco,
                 produtoDTO.Lote
             );

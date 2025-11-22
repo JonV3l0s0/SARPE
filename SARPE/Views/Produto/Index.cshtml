@@ -33,9 +33,15 @@
 							<input name="Nome" asp-for="@produtoASerCriado.Nome" class="form-control" />
 						</div>
 					</div>
-					<div class="col-12">
-						<label asp-for="@produtoASerCriado.Descricao" class="form-label">Descrição</label>
-						<input name="Descricao" asp-for="@produtoASerCriado.Descricao" class="form-control" />
+					<div class="d-flex flex-row">
+						<div class="col-9 pe-2">
+							<label asp-for="@produtoASerCriado.Descricao" class="form-label">Descrição</label>
+							<input name="Descricao" asp-for="@produtoASerCriado.Descricao" class="form-control" />
+						</div>
+						<div class="col-3 ps-2">
+							<label asp-for="@produtoASerCriado.Quantidade" class="form-label">Quantidade</label>
+							<input name="Quantidade" asp-for="@produtoASerCriado.Quantidade" class="form-control" />
+						</div>
 					</div>
 					<div class="d-flex flex-row align-items-end">
 						<div class="col-3 pe-2">
@@ -68,6 +74,7 @@
 						<th>Cod. Barras</th>
 						<th>Nome</th>
 						<th>Descrição</th>
+						<th>Quantidade</th>
 						<th>Preço</th>
 						<th>Lote</th>
 					</tr>
@@ -79,6 +86,7 @@
 							<td>@produto.CodigoDeBarras</td>
 							<td> <a asp-action="Details" asp-route-id="@produto.Id">@produto.Nome</a></td>
 							<td>@produto.Descricao</td>
+							<td>@produto.Quantidade</td>
 							<td>@produto.Preco.ToString("C", new CultureInfo("pt-BR"))</td>
 							<td>@produto.Lote</td>
 						</tr>

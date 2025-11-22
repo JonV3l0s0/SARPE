@@ -15,6 +15,7 @@ namespace SARPE.Repository
                 var produtoAAtualizar = GetProdutoPorId(produto.Id);
                 produtoAAtualizar.Nome = produto.Nome;
                 produtoAAtualizar.Descricao = produto.Descricao;
+                produtoAAtualizar.Quantidade = produto.Quantidade;
                 produtoAAtualizar.Preco = produto.Preco;
 
                 Debug.WriteLine("Produto Atualizado com sucesso!");
