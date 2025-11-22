@@ -55,6 +55,20 @@ namespace SARPE.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult SalvarTodosOsProdutos()
+        {
+            try
+            {
+                _produtoService.SalvarTodosOsProdutos();
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         [HttpPost(Name = nameof(Edit))]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, ProdutoEditarDTO produtoEditado)

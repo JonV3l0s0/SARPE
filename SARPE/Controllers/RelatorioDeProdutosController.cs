@@ -16,13 +16,13 @@ namespace SARPE.Controllers
         [HttpGet(Name = nameof(Index))]
         public IActionResult Index()
         {
-            var produtos = _produtoService.GetTodosOsProdutos();
+            var produtos = _produtoService.GetTodosOsProdutosSalvos();
             return View(produtos);
         }
 
         public ActionResult Details(int id)
         {
-            var produto = _produtoService.GetProdutoPorId(id);
+            var produto = _produtoService.GetProdutoSalvoPorId(id);
 
             if (produto is null)
                 RedirectToAction(nameof(Index));

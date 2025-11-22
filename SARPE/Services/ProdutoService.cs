@@ -44,6 +44,11 @@ namespace SARPE.Services
            var produto = _produtoRepository.GetProdutoPorId(id);
            return produto;
         }
+        public Produto? GetProdutoSalvoPorId(int id)
+        {
+           var produto = _produtoRepository.GetProdutoSalvoPorId(id);
+           return produto;
+        }
 
         public IEnumerable<Produto> GetTodosOsProdutos()
         {
@@ -51,13 +56,17 @@ namespace SARPE.Services
             return todosOsProdutos;
         }
 
+        public IEnumerable<Produto> GetTodosOsProdutosSalvos()
+        {
+            var todosOsProdutosSalvos = _produtoRepository.GetTodosOsProdutosSalvos();
+            return todosOsProdutosSalvos;
+        }
+
         public void SalvarProduto(ProdutoCriarDTO produtoDTO)
         {
-            var id = GetTodosOsProdutos().Count() == 0 ? 0 : GetTodosOsProdutos().Last().Id + 5;
-
             var produto = new Produto
             (
-                id,
+                0,
                 produtoDTO.CodigoDeBarras,
                 produtoDTO.Nome,
                 produtoDTO.Descricao,
@@ -67,6 +76,11 @@ namespace SARPE.Services
             );
 
             _produtoRepository.SalvarProduto(produto);
+        }
+
+        public void SalvarTodosOsProdutos()
+        {
+            _produtoRepository.SalvarTodosOsProdutos();
         }
     }
 }
