@@ -1,4 +1,28 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@functions {
+    // retorna as iniciais (máx 2 caracteres) a partir do displayName ou username
+    private string GetInitials(ClaimsPrincipal user)
+    {
+        var name = user?.FindFirst(ClaimTypes.Name)?.Value
+                   ?? user?.Identity?.Name
+                   ?? user?.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                   ?? string.Empty;
+
+        if (string.IsNullOrWhiteSpace(name)) return "U";
+
+        // tenta pegar duas primeiras letras significativas
+        var parts = name.Split(new[] { ' ', '.' }, StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length == 1)
+            return parts[0].Length >= 2 ? parts[0].Substring(0, 2).ToUpper() : parts[0].ToUpper();
+
+        var first = parts[0].Substring(0, 1);
+        var second = parts.Length > 1 ? parts[1].Substring(0, 1) : "";
+        return (first + second).ToUpper();
+    }
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -15,12 +39,41 @@
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img src="~/logo_s.png" width="33px" />
                 </a>
-                <button class="btn btn-primary rounded-circle">
-                    U
-                </button> 
- 
+
+                @if (User?.Identity?.IsAuthenticated ?? false)
+                {
+                    <!-- Usuário autenticado: bolinha com iniciais + dropdown -->
+                    <div class="dropdown ms-auto">
+                        <button class="btn btn-secondary rounded-circle d-flex align-items-center justify-content-center"
+                                id="userMenuBtn" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="width:40px; height:40px; font-weight:600;">
+                            @GetInitials(User)
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuBtn">
+                            <li class="px-3 py-2">
+                                Nome: <strong>@(User.FindFirst(ClaimTypes.Name)?.Value ?? User.Identity?.Name)</strong>
+                            </li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li>
+                                <form asp-controller="Account" asp-action="Logout" method="post" class="px-3 py-2">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-link p-0">Sair</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <!-- Usuário não autenticado: link para Login -->
+                    <div class="ms-auto">
+                        <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Login">Entrar</a>
+                    </div>
+                }
             </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
