@@ -25,7 +25,6 @@
 <form id="editarProdutoForm" name="editarProduto" method="post" asp-action="Edit" role="form" asp-route-id="@Model.Id">
 	<div class="col-6">
 		<div class="row g-2">
-			<!--Provavelmente vou add o cod de barras e lote para serem editáveis-->
 			<div class="col-12">
 				<label asp-for="@produtoDTO.Nome" class="form-label"></label>
 				<input name="Nome" asp-for="@produtoDTO.Nome" class="form-control" disabled readonly />
@@ -48,13 +47,9 @@
 				<input asp-for="Lote" class="form-control" disabled readonly />
 			</div>
 		</div>
-	</div>
-</form>
-
-@* <form id="deletarProdutoForm" name="deletarProduto" method="post" asp-action="Delete" role="form" asp-route-id="@Model.Id">
-	<div class="mt-2">
-		<div class="col-md-offset-2 col-md-5">
-			<input type="submit" class="btn btn-danger" value="Deletar Produto" />
+		<div class="mt-2">
+			<a asp-controller="Produto" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-primary">Editar produto</a>
+			<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Deletar produto</a>
 		</div>
 	</div>
-</form> *@
+</form>

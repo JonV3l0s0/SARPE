@@ -9,6 +9,6 @@ namespace SARPE.DTO
         public string Descricao { get; set; } = string.Empty;
         public int Quantidade { get; set; } = 0;
         public float Preco { get; set; }
-        public string Lote { get;  set; } = string.Empty;
+        public string Lote { get;  set; }
     }
 }

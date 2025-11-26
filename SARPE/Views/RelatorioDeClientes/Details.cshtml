@@ -17,7 +17,7 @@
 			</a>
 		</li>
 		<li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Relatorios" class="text-decoration-none">Relatórios</a></li>
-		<li class="breadcrumb-item"><a asp-area="" asp-controller="RelatorioDeProdutos" asp-action="Index" class="text-decoration-none">Relatório de produtos</a></li>
+		<li class="breadcrumb-item"><a asp-area="" asp-controller="RelatorioDeClientes" asp-action="Index" class="text-decoration-none">Relatório de clientes</a></li>
 		<li class="breadcrumb-item active" aria-current="page">Detalhes do cliente</li>
 	</ol>
 </nav>
@@ -52,6 +52,10 @@
 				<label asp-for="@clienteDTO.Telefone" class="form-label">Telefone</label>
 				<input name="Telefone" asp-for="@clienteDTO.Telefone" class="form-control" readonly />
 			</div>
+		</div>
+		<div class="mt-2">
+			<a asp-controller="Cliente" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-primary">Editar cliente</a>
+			<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Deletar cliente</a>
 		</div>
 	</div>
 </form>

@@ -6,8 +6,7 @@ namespace SARPE.Repository
     {
         private readonly List<Usuario> _users = new()
         {
-        new Usuario { Username = "admin", Senha = "Senha@123", NomeExibido = "Administrador" },
-        new Usuario { Username = "jon", Senha = "teste123", NomeExibido = "Jonathan" }
+            new Usuario { Username = "admin", Senha = "admin123", NomeExibido = "Administrador" },
         };
 
         public Usuario? GetByUsername(string username)

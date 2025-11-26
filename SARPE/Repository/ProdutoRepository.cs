@@ -80,7 +80,7 @@ namespace SARPE.Repository
 
         public Produto? GetProdutoPorId(int id)
         {
-           return _produtos.FirstOrDefault(p => p.Id == id);
+           return _produtos.FirstOrDefault(p => p.Id == id) == null ? GetProdutoSalvoPorId(id) : _produtos.FirstOrDefault(p => p.Id == id);
         }
 
 

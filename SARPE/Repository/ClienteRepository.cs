@@ -80,7 +80,7 @@ namespace SARPE.Repository
 
         public Cliente? GetClientePorId(int id)
         {
-            return _clientes.FirstOrDefault(c => c.Id == id);
+            return _clientes.FirstOrDefault(c => c.Id == id) == null ? GetClienteSalvoPorId(id) : _clientes.FirstOrDefault(c => c.Id == id);
         }
 
         public Cliente? GetClienteSalvoPorId(int id)

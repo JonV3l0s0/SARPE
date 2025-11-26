@@ -13,6 +13,8 @@ namespace SARPE.Controllers
         private readonly IAuthService _authService;
         public AccountController(IAuthService authService) => _authService = authService;
 
+        private readonly string authSchema = "MyCookieAuth";
+
         [AllowAnonymous]
         [HttpGet]
         public IActionResult Login(string? returnUrl = null)
@@ -37,13 +39,12 @@ namespace SARPE.Controllers
             }
 
             var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.NameIdentifier, user.Username),
-            new Claim(ClaimTypes.Name, user.NomeExibido)
-            // adicionar roles/claims adicionais se precisar
-        };
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Username),
+                new Claim(ClaimTypes.Name, user.NomeExibido)
+            };
 
-            var identity = new ClaimsIdentity(claims, "MyCookieAuth");
+            var identity = new ClaimsIdentity(claims, authSchema);
             var principal = new ClaimsPrincipal(identity);
 
             var props = new AuthenticationProperties
@@ -51,7 +52,7 @@ namespace SARPE.Controllers
                 ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8)
             };
 
-            await HttpContext.SignInAsync("MyCookieAuth", principal, props);
+            await HttpContext.SignInAsync(authSchema, principal, props);
 
             if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                 return Redirect(returnUrl);
@@ -63,7 +64,7 @@ namespace SARPE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync("MyCookieAuth");
+            await HttpContext.SignOutAsync(authSchema);
             return RedirectToAction("Index", "Home");
         }
 

@@ -25,6 +25,7 @@ namespace SARPE.Services
             produto.Descricao = produtoDTO.Descricao;
             produto.Quantidade = produtoDTO.Quantidade;
             produto.Preco = produtoDTO.Preco;
+            produto.Lote = produtoDTO.Lote;
 
             _produtoRepository.AtualizarProduto(produto);
         }

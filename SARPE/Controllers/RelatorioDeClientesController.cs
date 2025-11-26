@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SARPE.Contracts;
 using SARPE.Extensions;
+using SARPE.Models;
 using SARPE.Services;
 
 namespace SARPE.Controllers
@@ -15,11 +16,27 @@ namespace SARPE.Controllers
         }
 
         [HttpGet(Name = nameof(Index))]
-        public IActionResult Index()
+        public IActionResult Index(int page = 1, int pageSize = 10)
         {
-            var clientes = _clienteService.GetTodosOsClientesSalvos();
-            return View(clientes);
+            var todos = _clienteService.GetTodosOsClientesSalvos();
+            var total = todos.Count();
+
+            var clientesPaginados = todos
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var viewModel = new ClientePaginadoViewModel
+            {
+                Clientes = clientesPaginados,
+                PaginaAtual = page,
+                TamanhoPagina = pageSize,
+                TotalItens = total
+            };
+
+            return View(viewModel);
         }
+
 
         [HttpGet(Name = nameof(Details))]
         public ActionResult Details(int id)
