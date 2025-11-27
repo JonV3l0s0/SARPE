@@ -6,7 +6,7 @@
 
 [TEMPLATE REQUISITOS](https://docs.google.com/document/d/1w83ZcpKWXXyAxtSeFHH5XMu-wAxejjLs)
 
-[SHAREPOINT COM OS ARQUIVOS DO TRABALHO](https://drive.google.com/drive/folders/15U6kIRS_97hEN1NLkGoDlB09NxViDXAb?usp=drive_link)
+[DRIVE COM OS ARQUIVOS DO TRABALHO](https://drive.google.com/drive/folders/15U6kIRS_97hEN1NLkGoDlB09NxViDXAb?usp=drive_link)
 
 [GIT FLOW](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 
