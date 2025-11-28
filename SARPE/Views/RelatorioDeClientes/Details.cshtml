@@ -1,0 +1,57 @@
+﻿@using SARPE.DTO
+@using SARPE.Extensions;
+@model ClienteDetalheViewModel;
+
+@{
+	ClienteEditarDTO clienteDTO = Model.ToEditarDTO();
+	ViewData["Title"] = "Detalhes do cliente";
+}
+
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item d-flex align-items-center">
+			<a asp-area="" asp-controller="Home" asp-action="Index" class="d-flex align-items-center">
+				<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M2 16H5V10H11V16H14V7L8 2.5L2 7V16ZM0 18V6L8 0L16 6V18H9V12H7V18H0Z" fill="#000" />
+				</svg>
+			</a>
+		</li>
+		<li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Relatorios" class="text-decoration-none">Relatórios</a></li>
+		<li class="breadcrumb-item"><a asp-area="" asp-controller="RelatorioDeProdutos" asp-action="Index" class="text-decoration-none">Relatório de produtos</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Detalhes do cliente</li>
+	</ol>
+</nav>
+
+<form id="editarProdutoForm" name="editarProduto" method="post" asp-action="Edit" role="form" asp-route-id="@Model.Id">
+	<div class="col-6">
+		<div class="row g-2">
+			<div class="col-3 pe-2">
+				<label asp-for="@clienteDTO.CnpjCpf" class="form-label">CNPJ/CPF</label>
+				<input name="CnpjCpf" asp-for="@clienteDTO.CnpjCpf" class="form-control" readonly />
+			</div>
+			<div class="col-9 ps-2">
+				<label asp-for="@clienteDTO.RazaoSocial" class="form-label">Razão Social</label>
+				<input name="RazaoSocial" asp-for="@clienteDTO.RazaoSocial" class="form-control" readonly />
+			</div>
+			<div class="col-10 pe-2">
+				<label asp-for="@clienteDTO.Endereco" class="form-label">Endereço</label>
+				<input name="Endereco" asp-for="@clienteDTO.Endereco" class="form-control" readonly />
+			</div>
+			<div class="col-2 ps-2">
+				<label asp-for="@clienteDTO.IsAtivo" class="form-label">Status</label>
+				<select name="IsAtivo" asp-for="@clienteDTO.IsAtivo" class="form-select" disabled>
+					<option value="true">Ativo</option>
+					<option value="false">Inativo</option>
+				</select>
+			</div>
+			<div class="col-4 pe-2">
+				<label asp-for="@clienteDTO.Cidade" class="form-label">Cidade</label>
+				<input name="Cidade" asp-for="@clienteDTO.Cidade" class="form-control" readonly />
+			</div>
+			<div class="col-3 px-2">
+				<label asp-for="@clienteDTO.Telefone" class="form-label">Telefone</label>
+				<input name="Telefone" asp-for="@clienteDTO.Telefone" class="form-control" readonly />
+			</div>
+		</div>
+	</div>
+</form>
